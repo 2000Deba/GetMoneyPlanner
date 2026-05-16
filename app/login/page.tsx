@@ -237,6 +237,9 @@ export default function LoginPage() {
         const toastId = toast.loading("Signing you in...");
 
         try {
+            await delay(1500);
+            updateToast(toastId, "success", "Login successful 🎉");
+            await delay(1000);
             await signIn(provider, {
                 callbackUrl: "/dashboard",
             });
