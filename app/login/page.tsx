@@ -125,7 +125,7 @@ export default function LoginPage() {
         const toastId = toast.loading("Signing you in...");
 
         try {
-            await delay(1500);
+            await delay(2000);
 
             const loginResult = await signIn("credentials", {
                 redirect: false,
@@ -237,6 +237,8 @@ export default function LoginPage() {
         const toastId = toast.loading("Signing you in...");
 
         try {
+            await delay(2000);
+            
             await signIn(provider, {
                 callbackUrl: "/dashboard",
             });
