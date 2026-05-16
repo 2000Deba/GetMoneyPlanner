@@ -8,7 +8,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from "react-icons/ai";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { toast } from "react-hot-toast";
 
@@ -126,6 +126,9 @@ function getStrengthLabel(strength: number) {
 
 
 export default function RegisterPage() {
+    const router = useRouter();
+    const { data: session, status } = useSession();
+    
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const {
@@ -142,7 +145,6 @@ export default function RegisterPage() {
 
     const strength = getPasswordStrength(password);
     const strengthInfo = getStrengthLabel(strength);
-    const router = useRouter();
     const [loading, setLoading] = useState(false);
     const [serverError, setServerError] = useState<string | null>(null);
 
@@ -213,7 +215,7 @@ export default function RegisterPage() {
             updateToast(toastId, "success", "Login successful 🎉");
             setTimeout(() => {
                 router.refresh();
-                router.push("/dashboard");
+                router.replace("/dashboard");
             }, 1200);
         } catch (error) {
             setServerError("Something went wrong. Please try again.");
@@ -248,6 +250,12 @@ export default function RegisterPage() {
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            router.replace("/dashboard");
+        }
+    }, [status, router]);
 
     return (
         <main className="relative flex items-center justify-center px-6 py-24">
