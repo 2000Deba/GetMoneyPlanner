@@ -236,9 +236,11 @@ export default function RegisterPage() {
         const toastId = toast.loading("Signing you in...");
 
         try {
+            await delay(1500);
             await signIn(provider, {
                 callbackUrl: "/dashboard",
             });
+            updateToast(toastId, "success", "Login successful 🎉");
 
         } catch (err) {
             updateToast(toastId, "error", "Something went wrong");
