@@ -63,9 +63,9 @@ const UserSchema = new Schema<IUser>(
         password: { type: String },
         provider: { type: String, default: "credentials" },
         image: { type: String },
-        lastLogin: { type: Date, default: null },
-        lastBudgetAlertSentAt: { type: Date, default: null },
-        lastBudgetAlertType: { type: String, default: null },
+        lastLogin: { type: Date },
+        lastBudgetAlertSentAt: { type: Date },
+        lastBudgetAlertType: { type: String },
         resetPasswordToken: { type: String },
         resetPasswordExpires: { type: Date },
         phone: { type: String, default: "" },
@@ -109,7 +109,7 @@ const UserSchema = new Schema<IUser>(
         },
 
         twoFactorEnabled: { type: Boolean, default: false },
-        twoFactorSecret: { type: String, default: null, select: false },
+        twoFactorSecret: { type: String, select: false },
 
         sessions: {
             type: [

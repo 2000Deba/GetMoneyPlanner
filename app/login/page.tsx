@@ -158,10 +158,11 @@ export default function LoginPage() {
                 password: "",
             });
 
+            fetch("/api/auth/track-session", { method: "POST" }).catch(() => { });
             updateToast(toastId, "success", "Login successful 🎉");
             setTimeout(() => {
                 router.refresh();
-                router.push("/dashboard");
+                router.replace("/dashboard");
             }, 1200);
         } catch (error) {
             setLoginError("Something went wrong. Please try again.");
@@ -200,8 +201,9 @@ export default function LoginPage() {
 
             pendingCredentials.current = null;
             reset({ email: "", password: "" });
+            fetch("/api/auth/track-session", { method: "POST" }).catch(() => { });
             updateToast(toastId, "success", "Login successful 🎉");
-            setTimeout(() => { router.refresh(); router.push("/dashboard"); }, 1200);
+            setTimeout(() => { router.refresh(); router.replace("/dashboard"); }, 1200);
 
         } catch {
             setLoginError("Something went wrong. Please try again.");
@@ -248,6 +250,12 @@ export default function LoginPage() {
             setLoading(false);
         }
     }
+
+    useEffect(() => {
+        if (status === "authenticated") {
+            router.replace("/dashboard");
+        }
+    }, [status, router]);
 
     return (
         <main className="relative flex items-center justify-center px-6 py-24">

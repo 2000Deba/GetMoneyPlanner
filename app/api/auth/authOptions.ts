@@ -8,7 +8,6 @@ import bcrypt from "bcryptjs";
 import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
 import speakeasy from "speakeasy";
-import { trackSession } from "@/lib/sessionTracker";
 
 export const authOptions: AuthOptions = {
     providers: [
@@ -79,12 +78,6 @@ export const authOptions: AuthOptions = {
                         throw new Error("Invalid authenticator code. Please try again.");
                     }
                 }
-
-                trackSession({
-                    email: user.email,
-                    userAgent: credentials.userAgent || "",
-                    ip: credentials.ip || "",
-                }).catch(() => { });
 
                 user.lastLogin = new Date();
                 await user.save();
