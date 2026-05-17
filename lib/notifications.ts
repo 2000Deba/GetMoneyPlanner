@@ -21,58 +21,40 @@ function emailWrapper(title: string, body: string): string {
   return `
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width">
-</head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width"></head>
 <body style="margin:0;padding:0;background:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-  <table width="100%" cellpadding="0" cellspacing="0" style="background:#f8fafc;padding:32px 20px;">
-    <tr>
-      <td align="center">
-        <table width="100%" cellpadding="0" cellspacing="0" style="max-width:520px;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
-          
-          <!-- Header -->
-          <tr>
-            <td style="background:linear-gradient(135deg,#7c3aed,#4f46e5);padding:28px 32px;">
-              <table cellpadding="0" cellspacing="0">
-                <tr>
-                  <td style="vertical-align:middle;padding-right:12px;">
-                    <img
-                      src="${logoUrl}"
-                      alt="GetMoneyPlanner"
-                      width="40"
-                      height="40"
-                      style="border-radius:8px;display:block;"
-                    />
-                  </td>
-                  <td style="vertical-align:middle;">
-                    <p style="margin:0 0 4px;color:#ddd6fe;font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">GetMoneyPlanner</p>
-                    <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:700;line-height:1.2;">${title}</h1>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-
-          <!-- Body -->
-          <tr>
-            <td style="padding:28px 32px;color:#374151;font-size:14px;line-height:1.7;">
-              ${body}
-            </td>
-          </tr>
-
-          <!-- Footer -->
-          <tr>
-            <td style="padding:20px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;font-size:12px;color:#9ca3af;text-align:center;">
-              You received this because you have notifications enabled in GetMoneyPlanner.<br>
-              <a href="${process.env.NEXTAUTH_URL}/profile" style="color:#7c3aed;text-decoration:none;">Manage preferences</a>
-            </td>
-          </tr>
-
-        </table>
-      </td>
-    </tr>
-  </table>
+  <div style="max-width:520px;margin:32px auto;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
+    <!-- Header -->
+    <div style="background:linear-gradient(135deg,#7c3aed,#4f46e5);padding:28px 32px;">
+      <table cellpadding="0" cellspacing="0" style="margin-bottom:12px;">
+        <tr>
+          <td style="vertical-align:middle;padding-right:10px;">
+            <img
+              src="${logoUrl}"
+              alt="GetMoneyPlanner"
+              width="36"
+              height="36"
+              style="border-radius:8px;display:block;"
+              onerror="this.style.display='none'"
+            />
+          </td>
+          <td style="vertical-align:middle;">
+            <p style="margin:0;color:#ddd6fe;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">GetMoneyPlanner</p>
+          </td>
+        </tr>
+      </table>
+      <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:700;">${title}</h1>
+    </div>
+    <!-- Body -->
+    <div style="padding:28px 32px;color:#374151;font-size:14px;line-height:1.7;">
+      ${body}
+    </div>
+    <!-- Footer -->
+    <div style="padding:20px 32px;background:#f9fafb;border-top:1px solid #e5e7eb;font-size:12px;color:#9ca3af;text-align:center;">
+      You received this because you have notifications enabled in GetMoneyPlanner.<br>
+      <a href="${process.env.NEXTAUTH_URL}/profile" style="color:#7c3aed;text-decoration:none;">Manage preferences</a>
+    </div>
+  </div>
 </body>
 </html>`;
 }
