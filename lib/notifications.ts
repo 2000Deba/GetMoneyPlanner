@@ -25,25 +25,17 @@ function emailWrapper(title: string, body: string): string {
 <body style="margin:0;padding:0;background:#f8fafc;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
   <div style="max-width:520px;margin:32px auto;background:#ffffff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,0.08);">
     <!-- Header -->
-    <div style="background:linear-gradient(135deg,#7c3aed,#4f46e5);padding:28px 32px;">
-      <table cellpadding="0" cellspacing="0" style="margin-bottom:12px;">
-        <tr>
-          <td style="vertical-align:middle;padding-right:10px;">
-            <img
-              src="${logoUrl}"
-              alt="GetMoneyPlanner"
-              width="36"
-              height="36"
-              style="border-radius:8px;display:block;"
-              onerror="this.style.display='none'"
-            />
-          </td>
-          <td style="vertical-align:middle;">
-            <p style="margin:0;color:#ddd6fe;font-size:12px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">GetMoneyPlanner</p>
-          </td>
-        </tr>
-      </table>
-      <h1 style="margin:0;color:#ffffff;font-size:20px;font-weight:700;">${title}</h1>
+    <div style="background:linear-gradient(135deg,#7c3aed,#4f46e5);padding:32px;text-align:center;">
+        <img
+          src="${logoUrl}"
+          alt="GetMoneyPlanner"
+          width="52"
+          height="52"
+          style="border-radius:12px;display:block;margin:0 auto 10px;"
+          onerror="this.style.display='none'"
+        />
+      <p style="margin:0 0 12px;color:#ddd6fe;font-size:13px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;">GetMoneyPlanner</p>
+      <h1 style="margin:0;color:#ffffff;font-size:22px;font-weight:700;">${title}</h1>
     </div>
     <!-- Body -->
     <div style="padding:28px 32px;color:#374151;font-size:14px;line-height:1.7;">
