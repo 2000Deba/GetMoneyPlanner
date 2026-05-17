@@ -127,8 +127,8 @@ function getStrengthLabel(strength: number) {
 
 export default function RegisterPage() {
     const router = useRouter();
-    const { data: session, status } = useSession();
-    
+    const { status } = useSession();
+
     const [showPassword, setShowPassword] = useState(false);
     const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const {
@@ -246,7 +246,6 @@ export default function RegisterPage() {
 
         } catch (err) {
             updateToast(toastId, "error", "Something went wrong");
-        } finally {
             setLoading(false);
         }
     }

@@ -248,7 +248,6 @@ export default function LoginPage() {
                 sessionStorage.removeItem("gmp_oauth_pending");
             }
             updateToast(toastId, "error", "Something went wrong");
-        } finally {
             setLoading(false);
         }
     }

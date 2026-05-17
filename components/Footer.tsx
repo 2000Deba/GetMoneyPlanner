@@ -47,12 +47,12 @@ const features = [
 ];
 
 const socials = [
-    { icon: Mail, href: "mailto:support@getmoneyplanner.app", label: "Email" },
+    { icon: Mail, href: "mailto:deep2000seal@gmail.com", label: "Email" },
     { icon: Github, href: "https://github.com/2000Deba", label: "GitHub" },
     { icon: Linkedin, href: "https://in.linkedin.com/in/debasishseal", label: "LinkedIn" },
-    { icon: Twitter, href: "#", label: "Twitter" },
-    { icon: Instagram, href: "#", label: "Instagram" },
-    { icon: Facebook, href: "#", label: "Facebook" },
+    { icon: Twitter, href: "https://x.com/shildebasish", label: "Twitter" },
+    { icon: Instagram, href: "https://www.instagram.com/sildebasish02?igsh=MWN4dmdkZDZvNjYxMg==", label: "Instagram" },
+    { icon: Facebook, href: "https://www.facebook.com/share/19h1bGQxvK/", label: "Facebook" },
 ];
 
 export default function Footer() {
