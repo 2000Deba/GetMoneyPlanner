@@ -63,7 +63,7 @@ const UserSchema = new Schema<IUser>(
         password: { type: String },
         provider: { type: String, default: "credentials" },
         image: { type: String },
-        lastLogin: { type: Date },
+        lastLogin: { type: Date, default: null },
         lastBudgetAlertSentAt: { type: Date },
         lastBudgetAlertType: { type: String },
         resetPasswordToken: { type: String },
