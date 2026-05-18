@@ -30,9 +30,26 @@ Built with a focus on real-world usability, security, and performance.
 
 ## 📸 Screenshots
 
-| Dashboard | Transactions | Goals |
-|---|---|---|
-| ![Dashboard](public/Dashboard.jpg) | ![Transactions](public/Transactions.jpg) | ![Goals](public/Goals.jpg) |
+<div align="center">
+  <table>
+    <tr>
+      <td align="center"><b>Dashboard</b></td>
+      <td align="center"><b>Transactions</b></td>
+    </tr>
+    <tr>
+      <td><img src="public/Dashboard.jpg" width="400" alt="Dashboard"/></td>
+      <td><img src="public/Transactions.jpg" width="400" alt="Transactions"/></td>
+    </tr>
+    <tr>
+      <td align="center"><b>Goals</b></td>
+      <td align="center"><b>Profile</b></td>
+    </tr>
+    <tr>
+      <td><img src="public/Goals.jpg" width="400" alt="Goals"/></td>
+      <td><img src="public/Profile.jpg" width="400" alt="Profile"/></td>
+    </tr>
+  </table>
+</div>
 
 ---
 
