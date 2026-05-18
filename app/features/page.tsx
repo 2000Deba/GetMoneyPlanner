@@ -391,7 +391,9 @@ export default function FeaturesPage() {
                         <div className="bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-xl p-4">
                             <div className="flex items-center justify-between mb-3">
                                 <p className="text-sm font-bold text-gray-900 dark:text-white">Financial Report</p>
-                                <span className="text-xs bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-full font-semibold">April 2026</span>
+                                <span className="text-xs bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2 py-0.5 rounded-full font-semibold">
+                                    {new Date().toLocaleString("en-US", { month: "long", year: "numeric" })}
+                                </span>
                             </div>
                             <div className="grid grid-cols-2 gap-2 mb-3">
                                 {[

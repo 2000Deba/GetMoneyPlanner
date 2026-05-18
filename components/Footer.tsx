@@ -184,7 +184,7 @@ export default function Footer() {
 
                     <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
                         <p className="text-xs text-gray-400 dark:text-slate-500">
-                            © {year} GetMoneyPlanner. Built with{" "}
+                            Copyright © {year} <span className="font-semibold">GetMoneyPlanner</span>. All Rights Reserved. Built with{" "}
                             <Heart className="w-3 h-3 inline text-red-400 fill-red-400" />{" "}
                             using Next.js, TypeScript & MongoDB.
                         </p>

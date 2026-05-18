@@ -28,6 +28,14 @@ Built with a focus on real-world usability, security, and performance.
 
 ---
 
+## 📸 Screenshots
+
+| Dashboard | Transactions | Goals |
+|---|---|---|
+| ![Dashboard](public/dashboard.jpg) | ![Transactions](public/transactions.jpg) | ![Goals](public/goals.jpg) |
+
+---
+
 ## ✨ Features
 
 ### 💰 Financial Management
@@ -143,14 +151,6 @@ ADMIN_EMAIL=admin@yourdomain.com
 ```
 
 > **Note:** For Gmail, use an [App Password](https://support.google.com/accounts/answer/185833), not your regular password.
-
----
-
-## 📸 Screenshots
-
-| Dashboard | Transactions | Goals |
-|---|---|---|
-| *(coming soon)* | *(coming soon)* | *(coming soon)* |
 
 ---
 

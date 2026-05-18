@@ -168,7 +168,9 @@ export default function HomePage() {
   const snapshotOpacity = useTransform(scrollYProgress, [0.5, 1], [1, 0]);
   const snapshotScale = useTransform(scrollYProgress, [0.5, 1], [1, 0.95]);
 
-  const year = new Date().getFullYear();
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = now.toLocaleString("en-US", { month: "long" });
 
   const features = [
     { icon: BarChart3, title: "Dashboard Analytics", color: "#8b5cf6", desc: "Real-time insights with beautiful charts. Track income, expenses, and trends at a glance with interactive visualizations." },
@@ -482,7 +484,7 @@ export default function HomePage() {
               <div className="relative bg-white dark:bg-slate-900 border border-gray-200 dark:border-slate-800 rounded-2xl p-5 shadow-xl">
                 <div className="flex items-center justify-between mb-4">
                   <p className="font-bold text-gray-900 dark:text-white">Financial Report</p>
-                  <span className="text-xs bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full font-semibold">April {year}</span>
+                  <span className="text-xs bg-amber-500/10 text-amber-600 dark:text-amber-400 px-2 py-1 rounded-full font-semibold">{month} {year}</span>
                 </div>
                 <div className="grid grid-cols-2 gap-3 mb-4">
                   {[
