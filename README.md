@@ -32,7 +32,7 @@ Built with a focus on real-world usability, security, and performance.
 
 | Dashboard | Transactions | Goals |
 |---|---|---|
-| ![Dashboard](public/dashboard.jpg) | ![Transactions](public/transactions.jpg) | ![Goals](public/goals.jpg) |
+| ![Dashboard](public/Dashboard.jpg) | ![Transactions](public/Transactions.jpg) | ![Goals](public/Goals.jpg) |
 
 ---
 
