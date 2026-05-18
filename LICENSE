@@ -1,0 +1,102 @@
+SOURCE-AVAILABLE LICENSE
+
+Copyright (c) 2026 Debasish Seal. All rights reserved.
+
+Permission is hereby granted to any person obtaining a copy of this software
+and associated documentation files (the "Software") to view, study, and
+contribute to the Software for educational and personal learning purposes only,
+subject to the following conditions:
+
+-------------------------------------------------------------------------------
+THIS SOFTWARE IS NOT OPEN-SOURCE.
+-------------------------------------------------------------------------------
+
+RESTRICTIONS — The following actions are STRICTLY PROHIBITED without explicit,
+prior written permission from the copyright holder:
+
+  1. Deployment — You may not deploy this Software, or any modified or derived
+     version of it, to any public server, private server, cloud platform,
+     hosting service, or app store (including but not limited to Vercel,
+     Netlify, AWS, GCP, Azure, Heroku, or any equivalent platform).
+
+  2. Redistribution — You may not copy, distribute, publish, transmit, or
+     make available this Software or any portion of it to any third party,
+     whether in original or modified form, by any means.
+
+  3. Commercial Use — You may not use this Software, in whole or in part,
+     for any commercial purpose, including but not limited to freelance work,
+     client projects, SaaS products, enterprise applications, or any activity
+     that generates revenue.
+
+  4. Sublicensing & Resale — You may not sell, rent, lease, sublicense,
+     or otherwise transfer rights to this Software or any part thereof.
+
+  5. Rebranding — You may not rename, rebrand, or present this Software or
+     any derivative work as your own original creation without explicit
+     attribution to the original author.
+
+  6. Derived Works — You may not publish, distribute, or deploy any software
+     that is functionally similar, visually similar, or substantially derived
+     from this Software.
+
+  7. Reverse Engineering for Replication — You may not use this codebase as
+     a template or blueprint to recreate a substantially similar product for
+     public or commercial use.
+
+PERMITTED USES:
+
+  - Viewing and studying the source code for educational purposes.
+  - Forking the repository via GitHub's platform feature, provided the forked
+    copy remains private or is used solely for learning, and remains fully
+    subject to the terms of this license.
+  - Submitting contributions (pull requests, bug reports, suggestions) to the
+    original repository.
+
+CONTRIBUTIONS:
+
+  By submitting a contribution (including but not limited to pull requests,
+  code snippets, suggestions, or documentation), you agree that:
+
+  - The contribution may be accepted, modified, or rejected at the sole
+    discretion of the copyright holder.
+  - You grant the copyright holder a perpetual, irrevocable, worldwide,
+    royalty-free right and license to use, reproduce, modify, adapt, publish,
+    distribute, and incorporate the contribution into this Software under
+    this license or any future license the copyright holder chooses.
+  - You represent that you have the right to submit the contribution and that
+    it does not infringe upon any third-party intellectual property rights.
+
+ATTRIBUTION:
+
+  Any permitted use of this Software must retain this license notice,
+  the original copyright notice, and clear attribution to the original
+  author: Debasish Seal (https://debasishseal.vercel.app).
+
+DISCLAIMER:
+
+  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+  FITNESS FOR A PARTICULAR PURPOSE, SECURITY, OR NON-INFRINGEMENT.
+
+  IN NO EVENT SHALL THE AUTHOR OR COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+  DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, PUNITIVE, OR CONSEQUENTIAL
+  DAMAGES (INCLUDING BUT NOT LIMITED TO PROCUREMENT OF SUBSTITUTE GOODS OR
+  SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+  CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+  OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE
+  USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+
+ENFORCEMENT:
+
+  Violation of any term of this license automatically and immediately
+  terminates your rights under this license. The copyright holder reserves
+  the right to pursue legal remedies for any violation of these terms.
+
+PERMISSION REQUESTS:
+
+  For any use not explicitly permitted above, contact the copyright holder:
+
+  Name:    Debasish Seal
+  Email:   deep2000seal@gmail.com
+  Website: https://debasishseal.vercel.app
+  GitHub:  https://github.com/2000Deba
