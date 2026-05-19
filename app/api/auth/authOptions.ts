@@ -142,7 +142,7 @@ export const authOptions: AuthOptions = {
                     }
                 } catch { /* silent */ }
             }
-            if ((user || trigger === "update") && token.email) {
+            if (trigger === "update" && token.email) {
                 try {
                     await connectDB();
                     const { default: UserModel } = await import("@/models/User");
