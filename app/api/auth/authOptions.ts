@@ -39,7 +39,7 @@ export const authOptions: AuthOptions = {
                 await connectDB();
 
                 const user = await User.findOne({ email: credentials.email }).select(
-                    "+twoFactorSecret"
+                    "+password +twoFactorSecret"
                 );
                 if (!user) {
                     throw new Error("No user found with this email");
@@ -142,7 +142,7 @@ export const authOptions: AuthOptions = {
                     }
                 } catch { /* silent */ }
             }
-            if (trigger === "update" && token.email) {
+            if ((user || trigger === "update") && token.email) {
                 try {
                     await connectDB();
                     const { default: UserModel } = await import("@/models/User");
