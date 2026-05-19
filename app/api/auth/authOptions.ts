@@ -39,7 +39,7 @@ export const authOptions: AuthOptions = {
                 await connectDB();
 
                 const user = await User.findOne({ email: credentials.email }).select(
-                    "+password +twoFactorSecret"
+                    "+twoFactorSecret"
                 );
                 if (!user) {
                     throw new Error("No user found with this email");

@@ -42,17 +42,14 @@ export async function POST(req: NextRequest) {
         await User.findOneAndUpdate(
             { _id: user._id },
             {
-                $set: {
-                    password: hashed,
-                    provider: "credentials",
-                    sessions: [],
-                },
-                $unset: {
-                    resetPasswordToken: "",
-                    resetPasswordExpires: "",
-                },
-            },
-            { new: true }
+                $set: { password: hashed },
+                $unset: { resetPasswordToken: "", resetPasswordExpires: "" },
+            }
+        );
+
+        await User.findOneAndUpdate(
+            { _id: user._id },
+            { $set: { sessions: [] } }
         );
 
         return NextResponse.json({
