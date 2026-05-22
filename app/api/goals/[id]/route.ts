@@ -48,27 +48,27 @@ async function checkAndNotify(
   }
 
   const milestones = [25, 50, 75];
-  for (const milestone of milestones) {
-    if (prevPercent < milestone && newPercent >= milestone) {
-      const alreadyNotified = (goal.notifiedMilestones || []).includes(milestone);
-      if (alreadyNotified) break;
+  const crossedMilestones = milestones.filter(
+    m => prevPercent < m && newPercent >= m && !(goal.notifiedMilestones || []).includes(m)
+  );
 
-      const user = await User.findOne({ email: ownerEmail })
-        .select("currency").lean() as any;
+  if (crossedMilestones.length > 0) {
+    Goal.updateOne(
+      { _id: goal._id },
+      { $addToSet: { notifiedMilestones: { $each: crossedMilestones } } }
+    ).catch(() => { });
 
-      Goal.updateOne(
-        { _id: goal._id },
-        { $addToSet: { notifiedMilestones: milestone } }
-      ).catch(() => { });
+    const highestMilestone = Math.max(...crossedMilestones);
 
-      notifyGoalMilestone(ownerEmail, {
-        title: goal.title,
-        percent: milestone,
-        currentAmount: goal.currentAmount,
-        currency: user?.currency || goal.currency || "USD",
-      }).catch(() => { });
-      break;
-    }
+    const user = await User.findOne({ email: ownerEmail })
+      .select("currency").lean() as any;
+
+    notifyGoalMilestone(ownerEmail, {
+      title: goal.title,
+      percent: highestMilestone,
+      currentAmount: goal.currentAmount,
+      currency: user?.currency || goal.currency || "USD",
+    }).catch(() => { });
   }
 }
 
