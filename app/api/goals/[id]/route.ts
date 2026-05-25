@@ -425,15 +425,6 @@ export async function PUT(
         (sum: number, c: any) => sum + c.amount,
         0
       );
-
-      const percentAfterClear = goal.targetAmount > 0
-        ? Math.round((goal.currentAmount / goal.targetAmount) * 100)
-        : 0;
-
-      goal.notifiedMilestones = (goal.notifiedMilestones || []).filter(
-        (m: number) => percentAfterClear >= m
-      );
-
       await goal.save();
 
       const { syncGoalsForEmail } = await import("@/app/api/goals/route");

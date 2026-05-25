@@ -113,30 +113,22 @@ export async function syncGoalsForEmail(ownerEmail: string): Promise<void> {
           }
 
           if (!willBeCompleted) {
-            const crossedMilestones = [25, 50, 75].filter(
-              m => prevPercent < m && newPercent >= m && !(goal.notifiedMilestones || []).includes(m)
-            );
+            const hitMilestone = getHighestNewMilestone(prevPercent, newPercent, goal.notifiedMilestones || []);
+            if (hitMilestone !== null) {
+              const alreadyNotified = (goal.notifiedMilestones || []).includes(hitMilestone);
+              if (!alreadyNotified) {
+                Goal.updateOne(
+                  { _id: goal._id },
+                  { $addToSet: { notifiedMilestones: hitMilestone } }
+                ).catch(() => { });
 
-            if (crossedMilestones.length > 0) {
-              const highestMilestone = Math.max(...crossedMilestones);
-
-              const updated = await Goal.findOneAndUpdate(
-                {
-                  _id: goal._id,
-                  notifiedMilestones: { $not: { $all: crossedMilestones } },
-                },
-                { $addToSet: { notifiedMilestones: { $each: crossedMilestones } } },
-                { new: true }
-              );
-
-              if (!updated) continue;
-
-              notifyGoalMilestone(ownerEmail, {
-                title: goal.title,
-                percent: highestMilestone,
-                currentAmount: goal.currentAmount,
-                currency,
-              }).catch(() => { });
+                notifyGoalMilestone(ownerEmail, {
+                  title: goal.title,
+                  percent: hitMilestone,
+                  currentAmount: goal.currentAmount,
+                  currency,
+                }).catch(() => { });
+              }
             }
           }
 
