@@ -156,11 +156,6 @@ export async function GET(req: NextRequest) {
 
     const { searchParams } = new URL(req.url);
     const statusFilter = searchParams.get("status") || "all";
-    const syncFirst = searchParams.get("sync") === "true";
-
-    if (syncFirst) {
-      syncGoalsForEmail(session.user.email).catch(() => { });
-    }
 
     const query: Record<string, unknown> = { ownerEmail: session.user.email };
     if (statusFilter !== "all") query.status = statusFilter;
