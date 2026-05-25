@@ -113,22 +113,30 @@ export async function syncGoalsForEmail(ownerEmail: string): Promise<void> {
           }
 
           if (!willBeCompleted) {
-            const hitMilestone = getHighestNewMilestone(prevPercent, newPercent, goal.notifiedMilestones || []);
-            if (hitMilestone !== null) {
-              const alreadyNotified = (goal.notifiedMilestones || []).includes(hitMilestone);
-              if (!alreadyNotified) {
-                Goal.updateOne(
-                  { _id: goal._id },
-                  { $addToSet: { notifiedMilestones: hitMilestone } }
-                ).catch(() => { });
+            const crossedMilestones = [25, 50, 75].filter(
+              m => prevPercent < m && newPercent >= m && !(goal.notifiedMilestones || []).includes(m)
+            );
 
-                notifyGoalMilestone(ownerEmail, {
-                  title: goal.title,
-                  percent: hitMilestone,
-                  currentAmount: goal.currentAmount,
-                  currency,
-                }).catch(() => { });
-              }
+            if (crossedMilestones.length > 0) {
+              const highestMilestone = Math.max(...crossedMilestones);
+
+              const updated = await Goal.findOneAndUpdate(
+                {
+                  _id: goal._id,
+                  notifiedMilestones: { $not: { $all: crossedMilestones } },
+                },
+                { $addToSet: { notifiedMilestones: { $each: crossedMilestones } } },
+                { new: true }
+              );
+
+              if (!updated) continue;
+
+              notifyGoalMilestone(ownerEmail, {
+                title: goal.title,
+                percent: highestMilestone,
+                currentAmount: goal.currentAmount,
+                currency,
+              }).catch(() => { });
             }
           }
 
@@ -156,11 +164,6 @@ export async function GET(req: NextRequest) {
 
     const { searchParams } = new URL(req.url);
     const statusFilter = searchParams.get("status") || "all";
-    const syncFirst = searchParams.get("sync") === "true";
-
-    if (syncFirst) {
-      syncGoalsForEmail(session.user.email).catch(() => { });
-    }
 
     const query: Record<string, unknown> = { ownerEmail: session.user.email };
     if (statusFilter !== "all") query.status = statusFilter;
