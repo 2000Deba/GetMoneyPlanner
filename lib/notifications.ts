@@ -1,20 +1,9 @@
 // lib/notifications.ts
 
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
+const resend = new Resend(process.env.RESEND_API_KEY);
 import { connectDB } from "@/lib/mongodb";
 import User from "@/models/User";
-
-function getTransporter() {
-  return nodemailer.createTransport({
-    host: process.env.SMTP_HOST || "smtp.gmail.com",
-    port: Number(process.env.SMTP_PORT) || 587,
-    secure: false,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-  });
-}
 
 function emailWrapper(title: string, body: string): string {
   const logoUrl = `${process.env.NEXTAUTH_URL}/GetMoneyPlanner.png`;
@@ -93,10 +82,8 @@ export async function sendNotification(payload: NotifPayload): Promise<void> {
 
     if (!prefs.emailAlerts) return;
 
-    const transporter = getTransporter();
-
-    await transporter.sendMail({
-      from: `"GetMoneyPlanner" <${process.env.SMTP_USER}>`,
+    await resend.emails.send({
+      from: `GetMoneyPlanner <${process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
       to: payload.ownerEmail,
       subject: payload.subject,
       html: emailWrapper(payload.title, payload.bodyHtml),
@@ -255,7 +242,6 @@ export async function sendPasswordResetEmail({
   name: string;
   resetUrl: string;
 }): Promise<void> {
-  const transporter = getTransporter();
 
   const html = `
 <!DOCTYPE html>
@@ -327,12 +313,11 @@ export async function sendPasswordResetEmail({
 </body>
 </html>`;
 
-  await transporter.sendMail({
-    from: `"GetMoneyPlanner" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: `GetMoneyPlanner <${process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
     to,
     subject: "Reset your GetMoneyPlanner password",
     html,
-    text: `Hi ${name},\n\nReset your password: ${resetUrl}\n\nThis link expires in 1 hour.\n\nIf you didn't request this, ignore this email.`,
   });
 }
 
@@ -340,7 +325,6 @@ export async function notifyContactConfirmation(
   to: string,
   data: { name: string; subject: string; category: string; message: string }
 ): Promise<void> {
-  const transporter = getTransporter();
 
   const categoryLabels: Record<string, string> = {
     general: "General Enquiry",
@@ -374,8 +358,8 @@ export async function notifyContactConfirmation(
     `
   );
 
-  await transporter.sendMail({
-    from: `"GetMoneyPlanner" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: `GetMoneyPlanner <${process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
     to,
     subject: `We received your message — GetMoneyPlanner`,
     html,
@@ -394,8 +378,6 @@ export async function notifyContactAdmin(data: {
 }): Promise<void> {
   const adminEmail = process.env.ADMIN_EMAIL;
   if (!adminEmail) return;
-
-  const transporter = getTransporter();
 
   const categoryColors: Record<string, string> = {
     bug: "#ef4444",
@@ -463,8 +445,8 @@ export async function notifyContactAdmin(data: {
     `
   );
 
-  await transporter.sendMail({
-    from: `"GetMoneyPlanner Contact" <${process.env.SMTP_USER}>`,
+  await resend.emails.send({
+    from: `GetMoneyPlanner Contact <${process.env.RESEND_FROM_EMAIL || "onboarding@resend.dev"}>`,
     to: adminEmail,
     replyTo: data.email,
     subject: `[Contact] ${data.category}: ${data.subject}`,
