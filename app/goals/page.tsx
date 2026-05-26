@@ -687,8 +687,10 @@ function GoalForm({ initial, onSave, onClose, saving }: {
             </div>
             {linkedCategory && (
               <div className="flex items-center gap-2 text-xs text-violet-600 dark:text-violet-400">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                All <strong>{linkedType}</strong> transactions in <strong>{linkedCategory}</strong> will count automatically.
+                <CheckCircle2 className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                <span>
+                  All <strong>{linkedType}</strong> transactions in <strong>{linkedCategory}</strong> will count automatically.
+                </span>
               </div>
             )}
           </div>
