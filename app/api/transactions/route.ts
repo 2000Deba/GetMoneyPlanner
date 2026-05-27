@@ -76,11 +76,8 @@ export async function POST(req: NextRequest) {
             })
             .catch(() => { });
 
-        import("@/app/api/goals/route")
-            .then(({ syncGoalsForEmail }) => {
-                syncGoalsForEmail(ownerEmail).catch(() => { });
-            })
-            .catch(() => { });
+        const { syncGoalsForEmail } = await import("@/app/api/goals/route");
+        await syncGoalsForEmail(ownerEmail);
 
         return NextResponse.json(
             { success: true, data: transaction },
